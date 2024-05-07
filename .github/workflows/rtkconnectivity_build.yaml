@@ -3,8 +3,6 @@ run-name: ${{ github.event_name }} ${{ github.event.pull_request.head.sha || git
 on: 
   push:
   pull_request:
-  schedule:
-    - cron: "0 0 * * *"
 jobs:
   Build-ZMK:
     runs-on: ubuntu-latest
@@ -35,7 +33,7 @@ jobs:
           echo "zephyr-manifest-ref: ${APP_REF}"
 
       - id: checkout-build
-        uses: catherine-guo-2024/actions-west-checkout-for-event@zmk-build
+        uses: catherine-guo-2024/actions-west-checkout-for-event@v1.0
         with:
           zephyr-manifest-repository: ${{ env.APP_REPOSITORY }}
           zephyr-manifest-ref: ${{ env.APP_REF }}
